@@ -29,7 +29,7 @@ export class App implements OnInit {
   }
   async getMiembros() {
     try {
-      return lastValueFrom(this.http.get('http://localhost:5103/api/Miembros'));
+      return lastValueFrom(this.http.get('https://localhost:5103/api/Miembros'));
     } catch (error) {
       console.log(error);
       throw error;
