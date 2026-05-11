@@ -2,12 +2,13 @@ import { Component, signal, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
+import { Nav } from '../layout/nav/nav';
 // import { inject, Component, OnInit } from '@angular/core';
 
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [Nav],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -15,7 +16,7 @@ import { lastValueFrom } from 'rxjs';
 export class App implements OnInit {
     private http = inject(HttpClient);
   // protected readonly title = signal('AppMensajeCliente');
-  protected title = 'Api de mensajes';
+  protected title = 'Aplicacion de mensajes';
   // protected Miembros: any;
   protected Miembros = signal<any>([])
 
