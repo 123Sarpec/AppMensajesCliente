@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../../core/services/account-service';
 
@@ -9,16 +9,25 @@ import { AccountService } from '../../core/services/account-service';
   styleUrl: './nav.css',
 })
 export class Nav {
-  /*INYECTACTMOS EL ARCHIVO DE ACCOUNT */
-  private accountService = inject(AccountService);
+  /*INYECTACTMOS EL ARCHIVO DE ACCOUNT */ 
+  protected accountService = inject(AccountService);
   protected credenciales: any = {}
+  /*mostratmos el inicio de sesion con exito*/
+  // protected loggeIn = signal(false);
+
     login () {
-      console.log(this.credenciales);
       this.accountService.login(this.credenciales).subscribe({
-        next: result => console.log(result),
+        next: result => {
+          console.log(result);
+          // this.loggeIn.set(true);
+          this.credenciales = {};
+        },
         error: error => console.log(error)
-        // complete: () => console.log('complete')
       });
+    }
+    logout () {
+      // this.loggeIn.set(false);
+      this.accountService.logout();
     }
 }
 

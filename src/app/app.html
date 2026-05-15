@@ -1,18 +1,4 @@
 <app-nav />
 
-<div class="card bg-base-100 w-1/2 mx-auto p-10 mt-25 shadow-xl">
-  <h1 class="text-3xl font-bold text-center "> {{title}}</h1>
-  <ul class="list">
-    @for (Miembro of Miembros(); track Miembro.id) {
-    <li class="list-row items-center">
-      <img src="/usuario.png" alt="user" class="w-10 h-10 rounded-full" />
-      <!-- {{Miembro.id}} - {{Miembro.nombre}} - {{Miembro.email}} -->
-      <div>
-        {{Miembro.nombre}}
-      </div>
-    </li>
-    }
-  </ul>
-
-</div>
+<app-home />
 <!-- <button class="btn btn-accent btn-outline">Three</button> -->

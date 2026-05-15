@@ -3,17 +3,20 @@ import { RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
 import { Nav } from '../layout/nav/nav';
+import { AccountService } from '../core/services/account-service';
+import { Home } from '../features/home/home';
 // import { inject, Component, OnInit } from '@angular/core';
 
 
 @Component({
   selector: 'app-root',
-  imports: [Nav],
+  imports: [Nav , Home],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 
 export class App implements OnInit {
+  private accountService = inject(AccountService);
     private http = inject(HttpClient);
   // protected readonly title = signal('AppMensajeCliente');
   protected title = 'Aplicacion de mensajes';
@@ -27,6 +30,14 @@ export class App implements OnInit {
     //   error: err => console.log(err),
     //   complete: () => console.log('complete')
     // });
+      this.setCurrentUser();
+  }
+  /*peroszonalizar para que no se cierra la sesion al actualizar la pagina */
+  setCurrentUser () {
+    const usuarioString = localStorage.getItem('usuario');
+    if (!usuarioString) return
+    const usuario = JSON.parse(usuarioString);
+    this.accountService.usuarioActual.set(usuario);
   }
   async getMiembros() {
     try {
