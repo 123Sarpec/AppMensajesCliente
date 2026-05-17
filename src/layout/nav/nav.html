@@ -12,14 +12,16 @@
                     clip-rule="evenodd" />
             </svg>
             <h1
-                class=" text-2xl font-semibold uppercase text-white">AppMensajes</h1>
+                class=" text-xl md:text-2xl font-semibold uppercase text-white">ChatBlest</h1>
         </a>
-        <nav class="flex gap-3  my-2 uppercase text-lg text-white">
-            <a>Encuentros</a>
-            <a>Listas</a>
-            <a>Mensajes</a>
+        <nav
+            class="flex flex-wrap justify-center gap-4  my-2 uppercase text-sm md:text-lg text-white">
+            <a
+                class="cursor-pointer hover:text-secondary-content">Encuentros</a>
+            <a class="cursor-pointer hover:text-secondary-content">Listas</a>
+            <a class="cursor-pointer hover:text-secondary-content">Mensajes</a>
         </nav>
-        <div class="flex align-middle ml-auto gap-3">
+        <div class="md:ml-auto w-full md:w-auto">
             @if (accountService.usuarioActual(); as usuario) {
             <div class="dropdown dropdown-end">
                 <div tabindex="0" role="button"
@@ -38,18 +40,18 @@
             </div>
             } @else {
             <form #loginForm="ngForm" (ngSubmit)="login()"
-                class="flex items-center ml-auto gap-3">
+                class="flex items-center  md:ml-auto mt-3 gap-3 w-full md:mt-0">
                 <input
                     [(ngModel)]="credenciales.email"
                     name="email"
                     type="text"
-                    class="input"
+                    class="input w-full md:w-auto"
                     placeholder="Tu Email">
                 <input
                     [(ngModel)]="credenciales.password"
                     name="password"
                     type="password"
-                    class="input"
+                    class="input w-full md:w-auto"
                     placeholder="Tu contraseña">
                 <button type="submit"
                     class="btn btn-primary">Entrar</button>

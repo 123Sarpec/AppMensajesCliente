@@ -5,6 +5,7 @@ import { lastValueFrom } from 'rxjs';
 import { Nav } from '../layout/nav/nav';
 import { AccountService } from '../core/services/account-service';
 import { Home } from '../features/home/home';
+import { Usuario } from '../Types/usuario';
 // import { inject, Component, OnInit } from '@angular/core';
 
 
@@ -21,7 +22,7 @@ export class App implements OnInit {
   // protected readonly title = signal('AppMensajeCliente');
   protected title = 'Aplicacion de mensajes';
   // protected Miembros: any;
-  protected Miembros = signal<any>([])
+  protected Miembros = signal<Usuario[]>([])
 
  async  ngOnInit() {
     // this.http.get('http://localhost:5103/api/Miembros').subscribe({
@@ -41,7 +42,7 @@ export class App implements OnInit {
   }
   async getMiembros() {
     try {
-      return lastValueFrom(this.http.get('https://localhost:5103/api/Miembros'));
+      return lastValueFrom(this.http.get<Usuario[]>('https://localhost:5103/api/Miembros'));
     } catch (error) {
       console.log(error);
       throw error;
