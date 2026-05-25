@@ -11,7 +11,7 @@ import { Usuario } from '../../Types/usuario';
 })
 export class Home {
 
-  @Input({required: true }) MiembrosFormsApp: Usuario[] = [];
+  // @Input({required: true }) MiembrosFormsApp: Usuario[] = [];
   protected modoRegistro = signal(false);
 
   mostrarRegistro(value: boolean) {

@@ -1,6 +1,7 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { LoginRegistrar, Usuario } from '../../../Types/usuario';
 import { FormsModule } from '@angular/forms';
+import { AccountService } from '../../../core/services/account-service';
 
 
 @Component({
@@ -10,12 +11,22 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './registrar.css',
 })
 export class Registrar {
-  MiembrosFormsHome = input.required<Usuario[]>();
+  private accountService = inject(AccountService);
+  // MiembrosFormsHome = input.required<Usuario[]>();
   cancelarRegistro = output<boolean>();  
   protected credenciales = { } as LoginRegistrar;
 
   registrar() {
-    console.log(this.credenciales);
+    // console.log(this.credenciales);
+    this.accountService.registrar(this.credenciales).subscribe({
+      next: response => {
+        console.log(response);
+        this.cancelar();
+      },
+      error: error => {
+        console.log(error);
+      }
+    })  
   }
 
   cancelar() {

@@ -17,13 +17,13 @@
                     placeholder="Tu Contraseña"
                     [(ngModel)]="credenciales.password"
                     name="password">
-                <select name="miembro"
+                <!-- <select name="miembro"
                     class="select w-full">
                     <option disabled selected>Elige un Miembro</option>
                     @for (miembro of MiembrosFormsHome(); track $index) {
                     <option value="{{miembro.id}}">{{miembro.nombre}}</option>
                     }
-                </select>
+                </select> -->
 
                 <div class="flex flex-col sm:w-auto mt-2 gap-3">
                     <button type="button" (click)="cancelar()"

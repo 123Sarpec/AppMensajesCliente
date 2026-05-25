@@ -14,7 +14,7 @@
             <p class=" py-6 text-center">Conectate con tu cuenta para
                 comenzar</p>
             <div class=" flex justify-center items-center gap-3">
-                <button (click)="mostrarRegistro()"
+                <button (click)="mostrarRegistro(true)"
                     class="btn btn-success btn-lg">Crear cuenta</button>
                 <button class="btn btn-primary btn-lg">Saber mas...</button>
             </div>
@@ -24,10 +24,7 @@
     <div class=" w-full text-2xl text-center flex justify-center">
         <!-- Puedes crear una cuenta para poder usar ChatBlest, registrate ahora -->
         <app-registrar
-            [MiembrosFormsHome]="MiembrosFormsApp()"
-            class="w-full"
-            (cancelarRegistro)="mostrarRegistro($event)">
-        </app-registrar>
+            (cancelarRegistro)="mostrarRegistro($event)" />
         <!-- boolean):vodi "MiembrosFormApp"
             (cancelarRegistro)="mostrarRegistro($event)">
         </app-registrar> -->
