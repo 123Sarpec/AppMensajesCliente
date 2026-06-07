@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [Nav , RouterOutlet],
+  imports: [Nav, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -19,23 +19,23 @@ import { Router } from '@angular/router';
 export class App implements OnInit {
   private accountService = inject(AccountService);
   protected router = inject(Router);
-    private http = inject(HttpClient);
+  private http = inject(HttpClient);
   // protected readonly title = signal('AppMensajeCliente');
   protected title = 'Aplicacion de mensajes';
   // protected Miembros: any;
   protected Miembros = signal<Usuario[]>([])
 
- async  ngOnInit() {
+  async ngOnInit() {
     // this.http.get('http://localhost:5103/api/Miembros').subscribe({
     //   next: response => this.Miembros.set(response),
-    this.Miembros.set(await this.getMiembros());
+    // this.Miembros.set(await this.getMiembros());
     //   error: err => console.log(err),
     //   complete: () => console.log('complete')
     // });
-      this.setCurrentUser();
+    // this.setCurrentUser();
   }
   /*peroszonalizar para que no se cierra la sesion al actualizar la pagina */
-  setCurrentUser () {
+  setCurrentUser() {
     const usuarioString = localStorage.getItem('usuario');
     if (!usuarioString) return
     const usuario = JSON.parse(usuarioString);
@@ -46,7 +46,7 @@ export class App implements OnInit {
       return lastValueFrom(this.http.get<Usuario[]>('https://localhost:5103/api/Miembros'));
     } catch (error) {
       console.log(error);
-      throw error;
+      return [];
     }
   }
 
